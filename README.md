@@ -172,5 +172,5 @@ public class Code {
 ## Desenvolvedores
 
 Caio de Souza Conceição | souzascaio23cs@gmail.com <br>
-Lucas Dias Batista | lucasdbatista@artycs.com.br
+Lucas Dias Batista | lucasdbatista1@gmail.com
 ---
