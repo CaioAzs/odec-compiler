@@ -6,7 +6,7 @@ Este projeto é um compilador implementado em Java que realiza a análise léxic
 
 - **Análise Léxica**: Identifica e cria tokens a partir do código fonte.
 - **Análise Sintática**: Estrutura o código de acordo com as regras da gramática livre de contexto (GLC) da linguagem.
-- **Análise Semântica**: Verifica tipos e outros aspectos semânticos básicos do código.
+- **Análise Semântica**: Verifica SOMENTE a redeclaração de variáveis.
 - **Geração de Código**: Transforma o código da linguagem personalizada em código Java, pronto para execução.
 
 ## Estrutura do Projeto
@@ -17,9 +17,19 @@ O compilador está organizado em pacotes e classes que executam cada etapa do pr
 - **`Lexer.java`**: Responsável pela análise léxica, transformando o código em uma sequência de tokens.
 - **`Parser.java`**: Realiza a análise sintática, criando uma árvore de análise sintática (AST).
 - **`Tree.java`**: Representa a estrutura da AST.
-- **Arquivos de Saída**:
-  - **`Code.java`**: Código Java gerado a partir da linguagem personalizada.
-  - **`output.txt`** (opcional): Arquivo onde podem ser exibidas informações de tradução e análise.
+- **Arquivo de entrada**: Code.odec: nele o código em ODEC deve ser inserido, para posterior tradução para Java.
+- **Arquivos de Saída**: Código Java gerado a partir do código em ODEC.
+ 
+## REGEX para reconhecimento de Tokens
+
+- **ExtendedOperator**: `(!=|==|<=|>=|<|>|\|\||&&|[=!]=?|[-+*/%]=?)`
+- **Identifier**: `[a-zA-Z_][a-zA-Z0-9_]*`
+- **Limiters**: `[()\{\};]`
+- **LineComment**: `##.*`
+- **Number**: `^[0-9]+(\.[0-9]+)?$`
+- **Operator**: `[\/\+\-*\%]`
+- **ReservedWord**: `\^fi|\^esle|\^elihw|\^rof|\^taolf|\^tni|\^gnirts|\^fiesle|\^START|\^END|\^tnirp|\^nacs`
+- **StringLiteral**: `"([^"\\]*(\\.[^"\\]*)*)"`
 
 ## Gramática (GLC) da Linguagem
 
@@ -44,7 +54,6 @@ O compilador está organizado em pacotes e classes que executam cada etapa do pr
 <TYPE_SCAN> ->    INT // vira nextInt
                 | FLOAT // vira nextFloat
                 | STRING_LITERAL // vira nextLine
-
 ```
 
 ### Expressões (eliminando recursividade a esquerda)
