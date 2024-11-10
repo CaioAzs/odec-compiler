@@ -73,7 +73,8 @@ O compilador está organizado em pacotes e classes que executam cada etapa do pr
 <AssignOperator> -> "=" | "+=" | "-=" | "*=" | "/=" | "%="
 <ComparisonOperator> -> "==" | "!=" | "<=" | ">=" | "<" | ">"
 IDENTIFIER -> [a-zA-Z_][a-zA-Z0-9_]*
-NUMBER -> \d+(\.\d+)?
+NUMBER -> ^[0-9]+(\.[0-9]+)?$
+STRING_LITERAL -> "[a-zA-Z_][a-zA-Z0-9_]*"
 START -> "^START"
 END -> "^END"
 PRINT -> "^tnirp"
@@ -85,7 +86,6 @@ FOR -> "^rof"
 SCAN -> "^nacs"
 INT -> "^tni" 
 FLOAT -> "^taolf"
-STRING_LITERAL -> "[a-zA-Z_][a-zA-Z0-9_]*"
 ```
 
 ## Uso
