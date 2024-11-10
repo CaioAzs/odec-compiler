@@ -138,7 +138,7 @@ Este comando exibirá a lista de tokens gerados e a árvore de análise sintáti
     }^fiesle(a <= b){
         ^tnirp(b);
     }^esle{
-        ^tnirp("Vish, mo fita");
+        ^tnirp("Vish");
     }
 ^END
 ```
@@ -160,7 +160,7 @@ public class Code {
 		} else if (a <= b) {
 			System.out.println(b);
 		} else {
-			System.out.println("Vish, mo fita");
+			System.out.println("Vish");
 		}
 
 		scanner.close();
