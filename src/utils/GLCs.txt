@@ -1,0 +1,86 @@
+<Program> -> START <Bloco> END 👍
+
+
+<Bloco> -> <Statement> <Bloco> 👍
+        | ε
+
+<Statement> -> <Print> 👍
+             | <If>
+             | <While>
+             | <For>
+             | <Assignment>
+
+<COMMENT> -> "##" (?:[^"\\]|\\.) "\n" 👍
+
+<Print> -> PRINT "(" <Expression> ")" ";" 👍
+
+<If> -> IF "(" <Condition> ")" "{" <Bloco> "}" <ElseIf> <Else> 👍
+<ElseIf> -> ELSE_IF "(" <Condition> ")" "{" <Bloco> "}" | ε
+<Else> -> ELSE "{" <Bloco> "}" | ε
+
+<While> -> WHILE "(" <CONDITION> ")" "{" <Bloco> "}" 👍
+
+<For> -> FOR "(" <Assignment> ";" <CONDITION> ";" <Assignment_For> ")" "{" <Bloco> "}" 👍
+
+<Assignment_For> -> IDENTIFIER <AssignOperator> <Expression> 👍
+
+<Assignment> -> IDENTIFIER <AssignOperator> <Expression> ";" 👍
+
+<DECLARATION> TYPE ID ; || TYPE <Assignment> 👍
+
+TYPE -> INT | FLOAT | STRING 👍
+
+<Expression> -> <Term> <Expression'> 👍
+<Expression'> -> "+" <Term> <Expression'>
+              | "-" <Term> <Expression'>
+              | ε 
+
+<Term> -> <Factor> <Term'> 👍
+<Term'> -> "*" <Factor> <Term'>
+         | "/" <Factor> <Term'>
+         | "%" <Factor> <Term'>
+         | ε
+
+<Factor> -> "(" <Expression> ")" 👍
+          | IDENTIFIER
+          | NUMBER
+          | STRING_LITERAL
+
+<CONDITION> -> <Expression> <ComparisonOperator> <Expression> 👍
+
+<SCANNER> -> <SCAN> "{" <TYPE_SCAN> <IDENTIFIER> "}" ";" 👍
+
+<TYPE_SCAN> ->    INT // vira nextInt 👍
+                | FLOAT // vira nextFloat
+                | STRING_LITERAL // vira nextLine
+
+=================Terminais================= 👍
+
+<AssignOperator> -> "="
+                 | "+="
+                 | "-="
+                 | "*="
+                 | "/="
+                 | "%="
+
+<ComparisonOperator> -> "=="
+                     | "!="
+                     | "<="
+                     | ">="
+                     | "<"
+                     | ">"
+
+IDENTIFIER -> [a-zA-Z_][a-zA-Z0-9_]*
+NUMBER -> \d+(\.\d+)?
+START -> "^START"
+END -> "^END"
+PRINT -> "^tnirp"
+IF -> "^fi"
+ELSE -> "^esle"
+ELSE_IF -> "^fiesle"
+WHILE -> "^elihw"
+FOR -> "^rof"
+SCAN -> "^nacs"
+INT -> "^tni" 
+FLOAT -> "^taolf"
+STRING_LITERAL -> "[a-zA-Z_][a-zA-Z0-9_]*"

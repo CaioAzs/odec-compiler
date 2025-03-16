@@ -1,0 +1,25 @@
+^START
+
+    ^nacs{^tni primeiro};
+    ^nacs{^tni segundo};
+
+    ^fi(primeiro > segundo){
+        ^tnirp(primeiro);
+    }^fiesle(primeiro < segundo){
+        ^tnirp(segundo);
+    }^esle{
+        ^tnirp("São iguais");
+    }
+^END
+
+=======================================================================
+
+^START
+
+    ^tnirp("Digite a quantidade de números a serem printados:");
+    ^nacs{^tni qnt_num};
+    ^tni num;
+    ^rof(num = 0; num <= qnt_num; num = num + 1){
+        ^tnirp(num);
+    }
+^END

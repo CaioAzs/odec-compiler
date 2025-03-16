@@ -1,0 +1,13 @@
+^START
+
+    ^tnirp("Digite a quantidade de números a serem printados:");
+
+    ^nacs{^tni qnt_num};
+    ^tni num;
+    ^rof(num = 0; num <= qnt_num; num = num + 1){
+        ^tnirp(num);
+        ^rof(num = 0; num <= qnt_num; num = num + 1){
+            ^tnirp("a");
+    }
+    }
+^END
